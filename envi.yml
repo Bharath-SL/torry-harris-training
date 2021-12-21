@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: myenv-pod
+ annotations:
+  description: this is environment variable pod
+spec:
+ containers:
+  - name: con1
+    image: ubuntu
+    command: ["/bin/bash","-c","while true; do echo Hello-world 01; sleep 5; done"]
+    env:
+     - name: MYNAME
+       value: THBS
+ restartPolicy: Never      

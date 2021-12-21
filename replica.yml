@@ -1,0 +1,25 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+ name: replication
+ annotations:
+  description: this is rep controller
+spec:
+ replicas: 3
+ selector:
+  company: thbs
+  
+ template: # pod area
+  metadata:
+   name: insiderc-pod
+   labels:
+    company: thbs
+  spec:
+   containers:
+    - name: con1
+      image: ubuntu
+      command: ["/bin/bash","-c","while true; do echo Hello-world 01; sleep 5; done"]
+      env:
+       - name: MYNAME
+         value: THBS
+        

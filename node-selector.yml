@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: nodeselector-pod
+ annotations:
+  description: this is environment variable pod
+ labels:
+  env: prod
+  class: java
+  skill: cloud
+spec:
+ containers:
+  - name: c0
+    image: httpd
+    ports:
+      - containerPort: 80
+ nodeSelector: 
+      compy: thbs

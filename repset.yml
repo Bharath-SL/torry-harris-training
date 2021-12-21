@@ -1,0 +1,27 @@
+---
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+ name: repset-lab
+ labels: 
+  company: thbs
+spec:
+ replicas: 2
+ selector:
+  matchExpressions:
+   - {key: env, operator: In, values: [prod, stage]}
+ template:
+  metadata:
+   name: rspod
+   labels:
+    env: prod
+  spec:
+   containers:
+    - name: rscon1
+      image: ubuntu
+      command:
+       [
+       "/bin/bash",
+       "-c",
+       "while true; do echo hello rs; sleep 5; done",
+       ]
